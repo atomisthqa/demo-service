@@ -1,0 +1,5 @@
+---
+applications:
+- name: cd-demo
+  memory: 512M
+  #host: my-host
