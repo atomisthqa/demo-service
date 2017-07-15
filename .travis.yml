@@ -5,7 +5,7 @@ jdk:
 - oraclejdk8
 branches:
   except:
-  - "/\\+travis\\d+$/"
+  - /\+travis\d+$/
 env:
   global:
   - secure: LHOeAiDD+ftHF+d4ZScpwZCIlPTGpCVW8PYRUz/xbtHbz3Yvb+MifieH5WlgvLQwt4EaMprrfVgpnCe+8eFp12WXKhdvpHvcxAWbrjJwWi+Z9ysm4AgEm1nhZe3/l76PSBY+gEax2yWev0nTQZaLDvGLcXFl96niLAo7xJVCj53VIQmiYvC9PWYaoMn/8Wx69fnRRXlWlS75+p0GDNvUx+yazloF5sdo/jVm5p+5Bwm+xAvyiU640zLzZPpms+jo5dbSsXF2MrTSgUshSCbEw2A8YOek6bOFsYCs+qOCBLbVkreOPirYe7blQZULsBZ6kCWY2MIVRcbbdr8KGLT/+gFRf4EVWafTQFKupEAlRFKPAopWWwZc1ZwjN3QOQNo8t7bWYS+hbL6p9RMVncBV/DvquHkc4zu/NNKxLwsWlWQ33RGVDWAJCYWj269ZuqBt/GZBJrVOI4j9PAF+7OzIWMFHwIGywc29BOgHmfUeC4D9ehXjQx5COGDx9WYELj4GL129vzlAWGfwMUZSVlBktUQkNun4XLGYiIUs6SB8tknF9uplM4xpCh0HtD6DmPxbAav3gPjNm05xyot0DW3XNLP052A04AzuXod7EZ9eEpzlhV2aF4Vzbwib0tAx+7AOmIcqP93+qINNZi8FMvI4iCO6XUD+TtGxB08feKEK6rE=
@@ -26,10 +26,24 @@ notifications:
     on_error: always
 cache:
   directories:
-  - "$HOME/.m2"
-deploy:
+  - $HOME/.m2
+1deploy:
   provider: releases
-  api_key:
+  api_key: 
   on:
     tags: true
-    condition: "$TRAVIS_TAG =~ ^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    condition: $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$
+deploy:
+  provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: cd@atomist.com
+  password:
+    secure: I3FCz4FWvDbYr4SwG+iSYojqMrgO7/XteqKwYe4ChdeXbWc3AaXhtzTJdAZa+xalXNHXbwlR73AqQ7A3ASnICUP3MiwPiyqJ+vP6pMmp5TnooI2p+73w+g7j8cgaLnzDAWCI89OogapHS2W5xN8FFeYbXGVB0DVw8l1gVVRZ68zsMyZLtGUtgYum2og/Mg/9ix0Cm2Ih9JUvh7Jh/3pSXkgKy2wD+JL4LcooUY5gJXqacZ+t+eFjlK+xtT8iXiKT4RYhkF218oSiqbh89JA/hgILQIE5jo0KskCnNbVoUrovn9UT84rxgsWQbfty6cGYpHSTO7dIQfLL42Zi9cFZ5dd8UvWwDqbVIEPX6b/RuMHNeW6xlU1EyXXEdqmYEZ+7D4YgTWLiNWqcp07EiV6FworCpw3X1UumQRPt7biRqFY+Nph/iPgzUIs/ueLf3Z7rOshyxHGLAyuyldOr1soiFTmmjmxZXY+8RPbxzEQE5RaLZV7uxuRYzJE7uH0XS1YBvgnO7a4fFfEpPjLlPwJpWdKD/d7QEEiQD+TfN7WjhAxmNyY8GrTKE5E//D0ZJtHHO3VhCZ2OdbgRZU6b7OWIpyji5S37XA8lnLUhxfSC1lvGwWd8HKmXw2UYoBlIoYFA5nYeNL0K5JPf8/U9jI7JfHf7et/CiC+Jfj2EKBUdEx4=
+  organization: atomist
+  space: development
+  file:
+  - target/demo-service-$TRAVIS_TAG.jar
+  skip_cleanup: true  
+  on:
+    tags: true
+    condition: $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$
