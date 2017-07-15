@@ -44,6 +44,11 @@ function main() {
         return 0
     fi
 
+    if ! sed -i -e "s/VERSION/$project_version/g" manifest.yml; then 
+        err "replace version in manifest.yml failed"
+        return 1
+    fi
+
     if [[ $TRAVIS_BRANCH == master || $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+(-(m|rc)\.[0-9]+)?$ ]]; then
         if [[ $TRAVIS_REPO_SLUG == *-seed ]]; then
             msg "not deploying seed project"
