@@ -1,5 +1,7 @@
 # demo-service
 
+[![Build Status](https://travis-ci.org/atomisthqa/demo-service.svg?branch=master)](https://travis-ci.org/atomisthqa/demo-service)
+
 This project contains my new project.
 
 ## Development
