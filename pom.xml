@@ -41,7 +41,7 @@
 		<dependency>
             <groupId>com.atomist</groupId>
             <artifactId>spring-boot-agent</artifactId>
-            <version>0.1.4</version>
+            <version>0.1.5</version>
         </dependency>
     </dependencies>
 
