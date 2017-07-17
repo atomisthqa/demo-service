@@ -1,6 +1,6 @@
 ---
 applications:
-- name: cd-demo
+- name: cd-demo-service
   memory: 512M
   instances: 1
   path: target/demo-service-VERSION.jar

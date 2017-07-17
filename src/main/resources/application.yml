@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: demo-service
 logging:
   level:
     com.atomist.spring.agent: DEBUG
@@ -6,5 +9,5 @@ atomist:
   debug: true
   url: 'https://webhook-staging.atomist.services/atomist/application/teams/T1L0VDKJP'
   environment:
-    domain: '${vcap.application.name:development}:${vcap.application.instance_index:0}'
+    domain: 'development:${vcap.application.name:${spring.application.name}}'
     pod: 'cf-${HOSTNAME:${random.value}}'
