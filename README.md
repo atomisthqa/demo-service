@@ -4,6 +4,8 @@
 
 This project contains my new project.
 
+IGNORE THIS BRANCH
+
 ## Development
 
 This project is driven using [Maven][mvn].
