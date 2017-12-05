@@ -10,7 +10,7 @@ This project is driven using [Maven][mvn].
  
 [mvn]: https://maven.apache.org/c  
  
-### Run locally
+### Run locally 
  
 You can run the service locally using the followin g from the command:
 
