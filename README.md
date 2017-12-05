@@ -4,7 +4,7 @@
 
 This project contains my new project.
 
-## Development
+## Development 
 
 This project is driven using [Maven][mvn].
 
