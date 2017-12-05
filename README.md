@@ -8,7 +8,7 @@ This project contains my new project.
  
 This project is driven using [Maven][mvn].
  
-[mvn]: https://maven.apache.org/c 
+[mvn]: https://maven.apache.org/c  
  
 ### Run locally
  
